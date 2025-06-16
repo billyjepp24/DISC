@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GoogleFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/try', function () {
+    return view('main');
+});
+
+Route::POST('/login', function () {
+    return view('login');
+});
+Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
+Route::post('/googleform', [GoogleFormController::class, 'store'])->name('googleform.store');
+
 
 Auth::routes();
 
