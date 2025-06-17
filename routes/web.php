@@ -15,12 +15,9 @@ use App\Http\Controllers\AnswerController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return Redirect::to('login');
 });
 
-Route::get('/try', function () {
-    return view('main');
-});
 Route::get('/datatable', function () {
     return view('datatable');
 });
@@ -34,3 +31,4 @@ Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');

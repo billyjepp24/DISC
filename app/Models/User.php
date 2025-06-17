@@ -15,12 +15,25 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'id',
+        'emp_code',
+        'tr_no',
         'password',
+        'first_name',
+        'last_name',
+        'email',
+        'company_id',
+        'location_id',
+        'department_id',
+        'division_id',
+        'section_id',
+        'job_title_id',
+        'cluster_id',
+        'signature',
     ];
 
     /**
@@ -42,4 +55,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
 }
