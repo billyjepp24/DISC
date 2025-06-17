@@ -37,4 +37,21 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
+        public function username()
+    {
+        $login = request()->input('emp_code');
+
+        $fieldType = 'emp_code';
+
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
+
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 }

@@ -1,15 +1,28 @@
 import 'bootstrap';
-
+import jQuery from 'jquery';
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.$ = jQuery;
 import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
+// Datatables
+import DataTable from 'datatables.net-bs5';
+window.DataTable = DataTable;
+
+// Common js components
+import GoogleForm from './google_form';
+window.GoogleForm = GoogleForm;
+
+import Common from './common';
+window.Common = Common;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
