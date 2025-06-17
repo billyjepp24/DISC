@@ -126,3 +126,29 @@ body{
     color:#212121;
   }
   
+
+
+// Toast
+.toast {
+  top:30px!important;
+  right:30px!important;
+}
+div.toast-header {
+color:#F7F6FB;
+background-image: linear-gradient(to right top, #157347, #177e4e, #198854, #1b935b, #1d9e62);
+}
+
+div.toast-body {
+color:#177e4e;
+  background-color: #FFFFFF;
+}
+
+.toast.error {
+  .toast-header {
+      background-image: linear-gradient(to right top, #dc3545, #dc3545, #dc3545, #dc3545, #dc3545);
+  }
+
+  .toast-body {
+      color:#dc3545;
+  }
+}

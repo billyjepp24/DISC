@@ -1,61 +1,46 @@
 <!-- filepath: c:\google form\form.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DISC Workstyle Profile Questionnaire</title>
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-  <link rel="stylesheet" href="form.css">
-</head>
-<body>
-    
-    <div class="logo-container">
+@extends('layout')
+@section('content')
+<div class="logo-container">
+      
         <img src="{{ asset('/img/Magellan logo PNG A.png') }}" alt="Magellan Solutions Logo" class="logo">
     </div>
 
   <div class="container-form">
   
-    <div class="header">
-      
+    <div style="color: #EFFEFF;" class="header">
+      <div class="text-center">
       <h1>DISC Workstyle Profile Questionnaire</h1>
-      <p class="description">
+      <p style="color: #EFFEFF;" class="text-start">
         After completing this questionnaire, you will be able to determine your DISC Workstyle Profile.<br>Where:</br> 
-        <br> <b>D- means Domineering 
-        <br>I- Influencing
-        <br>S- Steady
-        <br>C- Conscientious
-        </br> </b>
+        <ul style="list-style: none; padding-left: 0; margin: 0;" class="text-start">
+        <li>D - Domineering</li>
+        <li>I - Influencing</li>
+        <li>S - Steady</li>
+        <li>C - Conscientious</li>
+        </ul>
       </p>
-    
-    <div class="instructions">
-      <h2>INSTRUCTIONS:</h2>
+    </div>
+    <div style="color: #EFFEFF;" class="instructions">
+      <h2 style="color: #EFFEFF;">INSTRUCTIONS:</h2>
       <ol>
-        <li>Click the word that best represents or describes you when you are at work.</li>
-        <li>Select from columns A-D totaling to 24 items.</li>
-        <li>Should you need to change your answer, just click your final chosen word.</li>
+        <li style="color: #EFFEFF;">Click the word that best represents or describes you when you are at work.</li>
+        <li style="color: #EFFEFF;">Select from columns A-D totaling to 24 items.</li>
+        <li style="color: #EFFEFF;">Should you need to change your answer, just click your final chosen word.</li>
       </ol>
       <p>Thank you.</p>
     </div>
 </div>
 
-    <form method="post" action="{{ route('googleform.store') }}">
-
-      @csrf
-      @method ('post')
-
+    <form id="google_form">
       {!! questionBlocks() !!}
-
-
-      <input type="submit" value="Submit" class="submit-button"/>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-    <script src="form.js"></script>
+@endsection
 
-    <div class="form-buttons">
-        <button class="clear-button" type="reset">Clear Form</button>
-      </div>
-      
-    
-</body>
-</html>
+@section('footer-scripts')
+<script type="module">
+GoogleForm.onLoadPage();
+</script>
+@endsection

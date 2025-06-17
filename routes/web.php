@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleFormController;
+use App\Http\Controllers\AnswerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,18 +15,20 @@ use App\Http\Controllers\GoogleFormController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/try', function () {
     return view('main');
 });
-
-Route::POST('/login', function () {
-    return view('login');
+Route::get('/datatable', function () {
+    return view('datatable');
 });
+// // Route::POST('/login', function () {
+//     return view('login');
+// });
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
-Route::post('/googleform', [GoogleFormController::class, 'store'])->name('googleform.store');
+Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
 
 
 Auth::routes();
