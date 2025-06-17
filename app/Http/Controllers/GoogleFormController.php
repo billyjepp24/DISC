@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GoogleForm;
-
+use Validator;
 class GoogleFormController extends Controller
 {
     //
@@ -15,23 +15,29 @@ class GoogleFormController extends Controller
     }
 
 
-        public function store(Request $request)
+    public function store(Request $request)
     {
-        
         // Validate that all 24 questions are answered with A-D
+        $rules = [];
         foreach (range(1, 24) as $i) {
-            $request->validate([
-                'question-' . $i => 'required|in:A,B,C,D',
-            ]);
+            $rules['question-' . $i] = 'required|in:A,B,C,D';
         }
 
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+           return response()->json(['errors'=>$validator->errors()]);
+        }
+     
         $answers = $request->only(array_map(fn($i) => 'question-' . $i, range(1, 24)));
-        dd($answers); // Debugging line to check the answers
+    
         GoogleForm::create([
             'answers' => $answers,
         ]);
 
-        return redirect()->back()->with('success', 'Form submitted successfully!');
+
+        return response()->json(['success' => 'Form submitted successfully!']);
+        // return redirect()->back()->with('success', 'Form submitted successfully!');
     }
 
 }

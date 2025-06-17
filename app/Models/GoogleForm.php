@@ -9,8 +9,7 @@ class GoogleForm extends Model
 {
     use HasFactory;
 
-
-
+protected $table    = 'google_form';
    protected $fillable = ['answers'];
 
 protected $casts = [

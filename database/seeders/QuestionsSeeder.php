@@ -39,9 +39,7 @@ class QuestionsSeeder extends Seeder
             ['option_a' => 'Dependent', 'option_b' => 'Inconsistent', 'option_c' => 'Submissive', 'option_d' => 'Pushy'],
             ['option_a' => 'Tolerant', 'option_b' => 'Conventional', 'option_c' => 'Stimulating', 'option_d' => 'Directing'],
 
-
-            // Add more questions as needed
-            
+ 
         ];
          DB::table('questions')->insert($questions);
     }
