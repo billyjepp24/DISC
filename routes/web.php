@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleFormController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ListDataTable;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +18,12 @@ use App\Http\Controllers\AnswerController;
 Route::get('/', function () {
     return Redirect::to('login');
 });
-
-Route::get('/datatable', function () {
-    return view('datatable');
+Route::get('/scoresheet', function () {
+    return view('scoresheet');
 });
+
+// 
+
 // // Route::POST('/login', function () {
 //     return view('login');
 // });
@@ -29,6 +32,12 @@ Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('
 
 
 Auth::routes();
+Route::group(['middleware'=>['auth']], function() {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
+
+Route::get('/datatable', [ListDataTable::class, 'index'])->name('datatable.index');
+Route::post('/datatable/list', [ListDataTable::class, 'list'])->name('datatable.list');
+
+});

@@ -38,10 +38,21 @@ class Common{
                 }
             },
             columns     : theads,
-            columnDefs  : tbodies 
+            columnDefs  : tbodies,
+            drawCallback: function () { self.initializeButtons(table, url) }
         }); 
     }
     
+    // Initialize Button
+    initializeButtons(table_name, url, useModal = true) {
+        const self = this
+
+        // Edit
+        $(table_name).on('click', '.btn-view', function () {
+            self.showModal('#datatableModal')
+        });
+    }
+
 
     showError(index, value) {
         var elem_id = '#' + index;
@@ -77,7 +88,39 @@ class Common{
         setTimeout(() => {
             $('.toast').fadeOut('slow');
         }, 3000);
-    }  
+    } 
+    
+    /**
+     * Show Modal
+     * @param modal_id = modal id
+     */
+    showModal(modal_id) {
+
+        var modalElement = document.querySelector(modal_id);
+        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+        if (!modalInstance) {
+            modalInstance = new bootstrap.Modal(modalElement);
+        }
+
+        modalInstance.show();
+    }
+
+    /**
+     * Hide Modal
+     * @param modal_id = modal id
+     */
+    hideModal(modal_id) {
+
+        var modalElement = document.querySelector(modal_id);
+        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+        if (!modalInstance) {
+            modalInstance = new bootstrap.Modal(modalElement);
+        }
+
+        modalInstance.hide();
+    }
 }
 
 export default new Common;

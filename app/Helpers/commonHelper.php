@@ -51,3 +51,40 @@ if (!function_exists('questionBlocks')) {
         return $output;
     }
 }
+
+
+
+if (!function_exists("user_details")) {
+    function user_details($emp_code)
+    {
+        if (empty($emp_code)) {
+            return ''; // or return a default value
+        }
+
+        $employees   = collect(session('all_emp'));
+        $departments = collect(session('all_department'));
+        $sections    = collect(session('all_section'));
+        $emp_details = $employees->firstWhere('emp_code', $emp_code);
+        $emp_department = $departments->firstWhere('id', $emp_details['department_id'] ?? null);
+        $emp_section = $sections->firstWhere('id', $emp_details['section_id'] ?? null);
+
+        return [
+            'name' => $emp_details ? $emp_details['first_name'] . ' ' . $emp_details['last_name'] : '',
+            'department' => $emp_department ? $emp_department['name'] : '',
+            'section' => $emp_section ? $emp_section['name'] : '',
+        ];
+    }
+}
+
+if (!function_exists("fetchdata_api")) {
+    function fetchdata_api($endpoint, $payload)
+    {
+        $token = session('auth_token');
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token, // Attach token
+            'Accept' => 'application/json',
+        ])->post(env('API_DATA') . '/' . $endpoint, $payload);
+
+        return $response->successful() ? $response->json() : null;
+    }
+}
