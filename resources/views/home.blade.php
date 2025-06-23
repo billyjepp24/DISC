@@ -16,7 +16,7 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-
+                <a href="{{ url('/googleform') }}" class="btn btn-primary" style="width:200px;">Go to Questionnaire</a>
                        
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

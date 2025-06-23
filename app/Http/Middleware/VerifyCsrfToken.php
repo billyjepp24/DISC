@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'googleform/store'
+      
+        'googleform/store', '/googleform/login', '/datatable/list', 'googleform/autosave', '/datatable/answers'
     ];
 }

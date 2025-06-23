@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleFormController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ListDataTable;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +18,19 @@ use App\Http\Controllers\AnswerController;
 Route::get('/', function () {
     return Redirect::to('login');
 });
-
-Route::get('/datatable', function () {
-    return view('datatable');
-});
-// // Route::POST('/login', function () {
-//     return view('login');
-// });
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
 Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
+Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
 
+Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
 Auth::routes();
-
+Route::group(['middleware'=>['auth']], function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
+// Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
+
+Route::get('/datatable', [ListDataTable::class, 'index'])->name('datatable.index');
+Route::post('/datatable/list', [ListDataTable::class, 'list'])->name('datatable.list');
+Route::post('/datatable/answers', [ListDataTable::class, 'show'])->name('answers.show');
+
+});

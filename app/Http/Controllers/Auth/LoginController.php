@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
+use App\Models\User;
 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -54,4 +60,31 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        // All Employee
+        $this->fetch_api_data('all_emp', 'emp_details');
+        $this->fetch_api_data('all_department', 'department');
+        $this->fetch_api_data('all_section', 'section');
+
+    }
+
+    private function fetch_api_data($sessionKey, $model){
+        if(!Session::has($sessionKey)){
+            $payload = [
+                'model' => $model,
+            ];
+            $api_data = fetchdata_api('api_data', $payload);
+            Session::put($sessionKey, $api_data);
+        }
+        else{
+            $api_data = Session::get($sessionKey);
+        }
+
+        return $api_data;
+    }
+
+
 }

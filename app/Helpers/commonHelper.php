@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Question;
+use App\Models\Score;
 
 if (!function_exists('questionBlocks')) {
     function questionBlocks()
@@ -49,5 +50,85 @@ if (!function_exists('questionBlocks')) {
         }
 
         return $output;
+    }
+}
+
+if (!function_exists('scoreBlock')) {
+    function scoreBlock()
+    {
+        $scores = Score::all();
+
+        $output = '<table id="discTable" class="table table-bordered">';
+        $output .= '<tbody>';
+
+        foreach ($scores as $index => $row) {
+            $number = $index + 1;
+            $output .= '<tr>';
+            $output .= '<td style="width: 30px;">' . $number . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->D) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->I) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->S) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->C) . '</td>';
+            $output .= '</tr>';
+        }
+
+        // Add Total row
+        $output .= '<tr class="disc-row">';
+        $output .= '<th class="no-border">Total</th>';
+        $output .= '<th id="totalD"></th>';
+        $output .= '<th id="totalI"></th>';
+        $output .= '<th id="totalS"></th>';
+        $output .= '<th id="totalC"></th>';
+        $output .= '</tr>';
+
+        // Add DISC labels row
+        $output .= '<tr class="disc-row">';
+        $output .= '<th class="no-border"></th>';
+        $output .= '<th>D</th>';
+        $output .= '<th>I</th>';
+        $output .= '<th>S</th>';
+        $output .= '<th>C</th>';
+        $output .= '</tr>';
+
+        $output .= '</tbody></table>';
+
+        return $output;
+    }
+}
+
+
+
+if (!function_exists("user_details")) {
+    function user_details($emp_code)
+    {
+        if (empty($emp_code)) {
+            return ''; // or return a default value
+        }
+
+        $employees   = collect(session('all_emp'));
+        $departments = collect(session('all_department'));
+        $sections    = collect(session('all_section'));
+        $emp_details = $employees->firstWhere('emp_code', $emp_code);
+        $emp_department = $departments->firstWhere('id', $emp_details['department_id'] ?? null);
+        $emp_section = $sections->firstWhere('id', $emp_details['section_id'] ?? null);
+
+        return [
+            'name' => $emp_details ? $emp_details['first_name'] . ' ' . $emp_details['last_name'] : '',
+            'department' => $emp_department ? $emp_department['name'] : '',
+            'section' => $emp_section ? $emp_section['name'] : '',
+        ];
+    }
+}
+
+if (!function_exists("fetchdata_api")) {
+    function fetchdata_api($endpoint, $payload)
+    {
+        $token = session('auth_token');
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token, // Attach token
+            'Accept' => 'application/json',
+        ])->post(env('API_DATA') . '/' . $endpoint, $payload);
+
+        return $response->successful() ? $response->json() : null;
     }
 }
