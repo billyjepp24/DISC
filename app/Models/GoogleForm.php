@@ -10,7 +10,7 @@ class GoogleForm extends Model
     use HasFactory;
 
 protected $table    = 'google_form';
-   protected $fillable = ['answers' ,'emp_code', 'is_submit'];
+   protected $fillable = ['answers' ,'emp_code', 'is_submit', 'created_at'];
 
     /**
      * Indicates if the model should be timestamped.

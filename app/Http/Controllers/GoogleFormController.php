@@ -33,11 +33,12 @@ class GoogleFormController extends Controller
         }
      
         $answers = $request->only(array_map(fn($i) => 'question-' . $i, range(1, 24)));
-    
-        GoogleForm::create([
+        $googleForm = GoogleForm::where('emp_code', $emp_code)->first();
+        $googleForm->update([
             'answers' => $answers,
             'emp_code' => $emp_code,
             'is_submit' => 1,
+            'created_at' => now(),
         ]);
 
 
