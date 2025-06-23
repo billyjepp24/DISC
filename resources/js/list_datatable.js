@@ -55,7 +55,7 @@ class ListDataTable {
             $('#modalCode').text(record.emp_code);
             $('#modalDept').text(record.department);
             $('#modalDate').text(record.created_at);
-
+          
             var answersArray = Object.values(record.answers);
             console.log(answersArray);
             self.highlightDISC(answersArray);

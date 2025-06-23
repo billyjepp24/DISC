@@ -74,13 +74,13 @@ class ListDataTable extends Controller
         $id = $request->input('id');
         $data = GoogleForm::findOrFail($id);
         $user_details = user_details($data->emp_code);
-
+        
         return response()->json([
             'id' => $data->id,
             'emp_code' => $data->emp_code,
             'emp_name' => $user_details['name'] ?? 'N/A',
             'department' => $user_details['department'] . '/' . $user_details['section'] ?? 'N/A',
-            'created_at' => $data->created_at->format('Y-m-d'),
+            'created_at' => date('Y-M-d', strtotime($data->created_at)),
             'answers' => $data->answers
         ]);
     }
