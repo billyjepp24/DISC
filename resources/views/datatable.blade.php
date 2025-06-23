@@ -45,50 +45,7 @@
                 <div class="score-title text-center mb-3">SCORE SHEET</div>
 
                 <!-- Custom table -->
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr><td>1</td><td>B</td><td>D</td><td>A</td><td>C</td></tr>
-                        <tr><td>2</td><td>A</td><td>C</td><td>D</td><td>B</td></tr>
-                        <tr><td>3</td><td>C</td><td>B</td><td>A</td><td>D</td></tr>
-                        <tr><td>4</td><td>A</td><td>D</td><td>C</td><td>B</td></tr>
-                        <tr><td>5</td><td>D</td><td>B</td><td>C</td><td>A</td></tr>
-                        <tr><td>6</td><td>B</td><td>A</td><td>D</td><td>C</td></tr>
-                        <tr><td>7</td><td>C</td><td>D</td><td>B</td><td>A</td></tr>
-                        <tr><td>8</td><td>B</td><td>A</td><td>D</td><td>C</td></tr>
-                        <tr><td>9</td><td>D</td><td>A</td><td>C</td><td>B</td></tr>
-                        <tr><td>10</td><td>C</td><td>B</td><td>D</td><td>A</td></tr>
-                        <tr><td>11</td><td>A</td><td>D</td><td>C</td><td>B</td></tr>
-                        <tr><td>12</td><td>D</td><td>C</td><td>A</td><td>B</td></tr>
-                        <tr><td>13</td><td>B</td><td>A</td><td>D</td><td>C</td></tr>
-                        <tr><td>14</td><td>C</td><td>D</td><td>B</td><td>A</td></tr>
-                        <tr><td>15</td><td>D</td><td>A</td><td>C</td><td>B</td></tr>
-                        <tr><td>16</td><td>A</td><td>B</td><td>C</td><td>D</td></tr>
-                        <tr><td>17</td><td>B</td><td>C</td><td>D</td><td>A</td></tr>
-                        <tr><td>18</td><td>C</td><td>A</td><td>B</td><td>D</td></tr>
-                        <tr><td>19</td><td>D</td><td>B</td><td>C</td><td>A</td></tr>
-                        <tr><td>20</td><td>A</td><td>D</td><td>C</td><td>B</td></tr>
-                        <tr><td>21</td><td>A</td><td>B</td><td>C</td><td>D</td></tr>
-                        <tr><td>22</td><td>D</td><td>C</td><td>B</td><td>A</td></tr>
-                        <tr><td>23</td><td>D</td><td>B</td><td>A</td><td>C</td></tr>
-                        <tr><td>24</td><td>D</td><td>C</td><td>A</td><td>B</td></tr>
-                        
-                        <tr class="disc-row">
-                            <th class="no-border">Total</th>
-                            <th id="totalD"></th>
-                            <th id="totalI"></th>
-                            <th id="totalS"></th>
-                            <th id="totalC"></th>
-                        </tr>
-
-                        <tr class="disc-row">
-                        <th class="no-border"></th>
-                        <th>D</th>
-                        <th>I</th>
-                        <th>S</th>
-                        <th>C</th>
-                        </tr>
-                    </tbody>
-                </table>
+                {!! scoreBlock() !!}
             </div>
         </div>
     </div>

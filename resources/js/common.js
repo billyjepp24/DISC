@@ -50,6 +50,7 @@ class Common{
         // Edit
         $(table_name).on('click', '.btn-view', function () {
             self.showModal('#datatableModal')
+            
         });
     }
 
@@ -124,3 +125,4 @@ class Common{
 }
 
 export default new Common;
+

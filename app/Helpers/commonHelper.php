@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Question;
+use App\Models\Score;
 
 if (!function_exists('questionBlocks')) {
     function questionBlocks()
@@ -47,6 +48,49 @@ if (!function_exists('questionBlocks')) {
                 </div>
             </div>';
         }
+
+        return $output;
+    }
+}
+
+if (!function_exists('scoreBlock')) {
+    function scoreBlock()
+    {
+        $scores = Score::all();
+
+        $output = '<table id="discTable" class="table table-bordered">';
+        $output .= '<tbody>';
+
+        foreach ($scores as $index => $row) {
+            $number = $index + 1;
+            $output .= '<tr>';
+            $output .= '<td style="width: 30px;">' . $number . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->D) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->I) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->S) . '</td>';
+            $output .= '<td>' . htmlspecialchars($row->C) . '</td>';
+            $output .= '</tr>';
+        }
+
+        // Add Total row
+        $output .= '<tr class="disc-row">';
+        $output .= '<th class="no-border">Total</th>';
+        $output .= '<th id="totalD"></th>';
+        $output .= '<th id="totalI"></th>';
+        $output .= '<th id="totalS"></th>';
+        $output .= '<th id="totalC"></th>';
+        $output .= '</tr>';
+
+        // Add DISC labels row
+        $output .= '<tr class="disc-row">';
+        $output .= '<th class="no-border"></th>';
+        $output .= '<th>D</th>';
+        $output .= '<th>I</th>';
+        $output .= '<th>S</th>';
+        $output .= '<th>C</th>';
+        $output .= '</tr>';
+
+        $output .= '</tbody></table>';
 
         return $output;
     }

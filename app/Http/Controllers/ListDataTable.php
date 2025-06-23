@@ -54,7 +54,8 @@ class ListDataTable extends Controller
                 'emp_code' => $d->emp_code,
                 'emp_name' => $user_details['name'] ?? 'N/A',
                 'department' => $user_details['department'] . '/'. $user_details['section'] ?? 'N/A',
-                'action' => '<button class="btn btn-sm btn-secondary btn-view" data-id="' . $d->id . '"><i class="bi bi-bullseye"></i></button>'
+                'action' => '<button class="btn btn-sm btn-secondary btn-view" 
+            data-id="' . $d->id . '"><i class="bi bi-bullseye"></i></button>'
 
             ];
             $i++;
@@ -67,4 +68,21 @@ class ListDataTable extends Controller
             'data' => $newData
         ]);
     }
+
+    public function show(Request $request)
+    {
+        $id = $request->input('id');
+        $data = GoogleForm::findOrFail($id);
+        $user_details = user_details($data->emp_code);
+
+        return response()->json([
+            'id' => $data->id,
+            'emp_code' => $data->emp_code,
+            'emp_name' => $user_details['name'] ?? 'N/A',
+            'department' => $user_details['department'] . '/' . $user_details['section'] ?? 'N/A',
+            'created_at' => $data->created_at->format('Y-m-d'),
+            'answers' => $data->answers
+        ]);
+    }
+
 }
