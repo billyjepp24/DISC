@@ -20,6 +20,9 @@ Route::get('/', function () {
 });
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
 Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
+Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
+
+Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {

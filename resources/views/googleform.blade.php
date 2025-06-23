@@ -32,15 +32,45 @@
     </div>
 </div>
 
-    <form id="google_form">
-      {!! questionBlocks() !!}
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  <form id="login_form" class="em-code-container">
+    <div class="em-code-container">
+      <div class="input-row">
+        <div class="input-group">
+          <label for="emp_code"></label>
+          <input type="text" id="emp_code" name="emp_code" required placeholder="Enter Employee Code">
+        </div>
+        <div class="input-group"input type="password" id="password" name="password" required placeholder="Enter Password">
+          <input type="password" id="password" name="password" required placeholder="Enter Password">
+        </div>
+      </div>
+      <button type="login" class="login-button">Login</button>
+    </div>
+  </form>
+
+
+    <div class="questionnaire-container d-none">
+      <form id="google_form">
+        <input type="hidden" name="emp_code_form" id="emp_code_form" value="">
+        {!! questionBlocks() !!}
+        <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
+
+  <div class ="submit-container d-none">
+    <div class="text-center">
+      <h2 style=" font-size: 150%;">Thank you for completing the questionnaire!</h2>
+      <p style="font-size: 100%;">Your responses have been recorded.</p>
+    </div>
+  </div>
+
+
 @endsection
 
 @section('footer-scripts')
 <script type="module">
 GoogleForm.onLoadPage();
 </script>
+
+
 @endsection

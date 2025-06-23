@@ -33,10 +33,18 @@ body{
 
 
 .header {
+  color: #a30e83;
   text-align: center;
-  background-color: #054b66;
+  background-color: #6bb5d2;
   border-radius: 10px;
   padding: 15px;
+
+  h1 {
+    color: #c00b84; 
+    text-shadow:
+    1px 1px 0 #ffffff,   
+   -1px -1px 0 #928484; 
+  }
 }
 .instructions{
   
@@ -77,15 +85,15 @@ body{
 .submit-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #6bb5d2;
+  background-color: #437acc;
   border: none;
-  border-radius: 5px;
-  color: #212121;
+  border-radius: 10px;
+  color: #ffffff;
   cursor: pointer;
 }
 
 .submit-button:hover {
-  background-color: #3378B1;
+  background-color: #4894d3;
 }
 
 .form-buttons {
@@ -125,7 +133,82 @@ body{
     font-size: 14px;
     color:#212121;
   }
+
+.em-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  padding: 20px;
+  margin-top:10px;
+  width:auto;
+  background-color: #6bb5d2;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
   
+}
+
+.input-row {
+  width: 65%;
+  gap: 20px; 
+  border:none;
+  height: px;
+  align-items: flex-start;
+  margin: auto;
+}
+
+.input-group {
+  flex: 1;
+  flex-direction: column;
+  color: #EFFEFF;
+  width: auto;
+  height: auto;
+  display: flex;
+  min-width: 0;;
+}
+
+.input-group label {
+    margin-bottom: 6px;
+    text-align: left;
+    color: #fff;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  width: 100%;
+  margin-bottom: 15px;
+  border: none;
+  box-sizing: border-box;
+  height: 30px;
+  padding: 5px;
+  outline: none;
+}
+
+
+.login-button {
+  width: 20%;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 20px;
+  margin-left: 225px;
+  background-color: #4a90e2;
+  color: #fff;
+  margin:auto;
+}
+.login-button:hover {
+  background-color: #3d4246;
+}
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+    color: #c00b84; 
+    text-shadow:
+    1px 1px 0 #ffffff,   
+   -1px -1px 0 #928484; 
+  
+}
 
 
 // Toast
