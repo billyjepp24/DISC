@@ -16,7 +16,7 @@
   
 </div>
 
-
+ <a href="{{ url('/home') }}" class="btn btn-primary" style="width:200px; margin-left:340px; background: #6bb5d2;">Go to Dashboard</a> 
 
 <div class="modal fade modal-wrapper" id="datatableModal"
     tabindex="-1" aria-labelledby="datatableModal" role="dialog" aria-hidden="true" style="display:none">
@@ -47,7 +47,9 @@
                 <!-- Custom table -->
                 {!! scoreBlock() !!}
             </div>
+            
         </div>
+        
     </div>
 </div>
 @endsection

@@ -1,0 +1,66 @@
+body {
+  background-image: url('../../public/img/bbg.png'); 
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.container {
+  margin-top: 250px;
+
+  
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: none;
+
+  .card-header {
+    background-color: #6bb5d2;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .card-body {
+    padding: 2rem;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+.btn {
+  margin: 0.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &.btn-primary {
+    background: linear-gradient(to right, #4a90e2, #6bb5d2);
+    border: none;
+
+    &:hover {
+      background: linear-gradient(to right, #4a90e2, #6bb5d2);
+      transform: scale(1.05);
+    }
+  }
+}
+
+a.dropdown-item {
+  text-align: center;
+  margin-top: 1rem;
+  color: #f34c4c;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+  &:hover {
+    color: #a71d2a;
+    text-decoration: underline;
+  }
+}
