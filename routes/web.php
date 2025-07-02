@@ -16,8 +16,12 @@ use App\Http\Controllers\ListDataTable;
 */
 
 Route::get('/', function () {
-    return Redirect::to('login');
+    return Redirect::to('home');
 });
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
 Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
@@ -27,7 +31,7 @@ Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->
 
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
 
 Route::get('/datatable', [ListDataTable::class, 'index'])->name('datatable.index');
