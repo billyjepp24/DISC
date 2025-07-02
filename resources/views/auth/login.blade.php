@@ -20,17 +20,17 @@
             </div>
             <form method="POST" action="{{ route('login') }}">
                  @csrf
+                <div class="no-bg alert alert-danger text-center p-0 border border-0 @error('emp_code') d-block @else d-none @enderror" role="alert">
+                @error('emp_code')
+                <small class="invalid-feedback text-danger @error('emp_code') d-block @else d-none @enderror"
+                    role="alert">{{ $message }}</small>
+                @enderror
+                </div>
                 <div class="input-group">
                     <input type="text" name="emp_code" class="emp_code" placeholder="Employee Code" required>  
                 </div>
                 <div class="input-group">
                     <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="alert alert-danger @error('emp_code') d-block @else d-none @enderror" role="alert">
-                @error('emp_code')
-                <small class="invalid-feedback text-danger @error('emp_code') d-block @else d-none @enderror"
-                    role="alert">{{ $message }}</small>
-                @enderror
                 </div>
                 <button type="submit" class="login-btn">LOG IN</button>
             </form>

@@ -70,25 +70,26 @@
         }
       }
     }*/
-
+    
     form {
       width: 100%;
 
       .input-group {
         width: 100%;
-        margin-bottom: 1.2em;
+        margin-bottom: 0;
 
         input {
           width: 100%;
           background: #fff;
-          border: none;
+          border: 1px solid #eee;
           border-radius: 30px;
           color: #808080;
-          padding: 16px 24px;
+          padding: 2rem;
           font-size: 1.1rem;
           outline: none;
           transition: border 0.1s, color 0.1s;
           box-sizing: border-box;
+
 
           &:focus {
             color: #181818;
@@ -115,6 +116,10 @@
           color: #fff;
           border-color: #181818;
         }
+      }
+
+      .no-bg {
+        background-color: transparent!important;
       }
     }
   }

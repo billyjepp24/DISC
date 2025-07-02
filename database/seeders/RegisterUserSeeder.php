@@ -21,7 +21,8 @@ class RegisterUserSeeder extends Seeder
             ['emp_code' => 5919],
             ['emp_code' => 3963],
             ['emp_code' => 3494],
-            
+            ['emp_code' => 8888],
+            ['emp_code' => 8898],
         ]);
 
     }
