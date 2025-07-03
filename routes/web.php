@@ -18,24 +18,20 @@ use App\Http\Controllers\ListDataTable;
 */
 
 Route::get('/', function () {
-    // return Redirect::to('googleform');
-   return Redirect::route('googleform'); 
+    return Redirect::to('googleform');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'googleform'], function () {
-    Route::get('/',          [GoogleFormController::class, 'index'])->name('googleform');
-    Route::get('/show',     [GoogleFormController::class, 'show'])->name('googleform.show');
+Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
+Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
+Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
+Route::get('/googleform/login', [GoogleFormController::class, 'show']);
+Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
-    Route::post('/store',    [GoogleFormController::class, 'store'])->name('googleform.store');
-    Route::post('/login',    [GoogleFormController::class, 'form_login'])->name('googleform.login');
-    Route::post('/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');    
-});
-
-
+Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
 
 // Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
