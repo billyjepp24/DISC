@@ -17,8 +17,7 @@ use App\Http\Controllers\ListDataTable;
 */
 
 Route::get('/', function () {
-    // return Redirect::to('googleform');
-    return redirect()->route('googleform');
+    return Redirect::to('googleform');
 });
 
 
@@ -28,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform');
 Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
 Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
-Route::get('/googleform/show', [GoogleFormController::class, 'show'])->name('googleform.show');
+Route::get('/googleform/show', [GoogleFormController::class, 'show']);
 Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
 Auth::routes();
