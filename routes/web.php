@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
+
 use App\Http\Controllers\GoogleFormController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ListDataTable;
@@ -16,7 +18,8 @@ use App\Http\Controllers\ListDataTable;
 */
 
 Route::get('/', function () {
-    return Redirect::to('googleform');
+    // return Redirect::to('googleform');
+   return Redirect::route('googleform'); 
 });
 
 
