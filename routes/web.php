@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Controllers\GoogleFormController;
 use App\Http\Controllers\AnswerController;
@@ -25,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform.index');
+Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform');
 Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('googleform.store');
 Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
 Route::get('/googleform/login', [GoogleFormController::class, 'show']);
