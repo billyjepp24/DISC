@@ -13,7 +13,7 @@ body{
  .logo-container {
 
   height: auto;
-  width: 37%;
+  width: 45rem;
   background-color:#CDED;
   text-align: center;
   margin: auto;
@@ -24,7 +24,7 @@ body{
  }
 
 .container-form {
-  width: 35%;
+  width: 45rem;
   margin: auto;
   padding: 15px;
   background-color:#CDED;
@@ -233,5 +233,20 @@ color:#177e4e;
 
   .toast-body {
       color:#dc3545;
+  }
+}
+
+
+
+@media  (max-width: 576px) {
+  .container-form {
+    width: fit-content; 
+  }
+  .logo-container {
+    width: fit-content; 
+  }
+  .logo{
+    width: 100%;
+    height: auto;
   }
 }
