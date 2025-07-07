@@ -17,7 +17,7 @@ use App\Http\Controllers\ListDataTable;
 */
 
 Route::get('/', function () {
-    return Redirect::to('login');
+    return Redirect::to('googleform');
 });
 
 
