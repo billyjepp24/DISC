@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleFormController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ListDataTable;
+use App\Http\Controllers\ApplicantsController;
+use App\Http\Controllers\ListDataTableApp;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +32,17 @@ Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->n
 Route::get('/googleform/show', [GoogleFormController::class, 'show']);
 Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
+Route::get('/googleform-app', [ApplicantsController::class, 'index'])->name('googleform-app');
+Route::post('/applicants/store', [ApplicantsController::class, 'store'])->name('applicants.store');
+Route::post('/googleform-app/store-basic', [ApplicantsController::class, 'storeBasic'])->name('applicants.storeBasic');
+Route::post('/googleform-app/autosave', [ApplicantsController::class, 'autosave'])->name('googleform-app.autosave');
+Route::post('/googleform-app/store', [ApplicantsController::class, 'store'])->name('googleform-app.store');
+Route::post('/googleform-app/fetch-answers', [ApplicantsController::class, 'fetchAnswers']);
+
+
+
+
+
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
 
@@ -38,5 +51,9 @@ Route::group(['middleware'=>['auth']], function() {
 Route::get('/datatable', [ListDataTable::class, 'index'])->name('datatable.index');
 Route::post('/datatable/list', [ListDataTable::class, 'list'])->name('datatable.list');
 Route::post('/datatable/answers', [ListDataTable::class, 'show'])->name('answers.show');
+
+Route::get('/datatable_app', [ListDataTableApp::class, 'index'])->name('datatable.index');
+Route::post('/datatable_app/list', [ListDataTableApp::class, 'list'])->name('datatable.list');
+Route::post('/datatable_app/answers', [ListDataTableApp::class, 'show'])->name('answers.show');
 
 });

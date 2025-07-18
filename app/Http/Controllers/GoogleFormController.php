@@ -56,7 +56,7 @@ class GoogleFormController extends Controller
         ];
 
         $response = Http::post(env('API_DATA') . '/' . 'login_api', $credentials);
-
+        
         if ($response->successful()) {
             $userData = $response->json();
             $result = $userData['result'];
@@ -92,4 +92,6 @@ class GoogleFormController extends Controller
         ]);
     }
 
+    
+    
 }

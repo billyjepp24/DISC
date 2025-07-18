@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('answers_app', function (Blueprint $table) {
             $table->id();
-            $table->string('emp_code');
-            $table->longText('answers')->nullable();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->string('email')->unique();
+            $table->string('name');
+            $table->json('answers')->nullable();
             $table->softDeletes();
             $table->string('deleted_by', 10)->nullable();
-
+            $table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('answers_app');
     }
 };
