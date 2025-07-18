@@ -79,7 +79,7 @@ class GoogleForm{
                         const savedAnswers = response.answers || {};
 
                         Object.entries(savedAnswers).forEach(([questionName, answerValue]) => {
-                        $(`input[name="${questionName}"][value="${answerValue}"]`).prop('checked', true);
+                        $(input[name="${questionName}"][value="${answerValue}"]).prop('checked', true);
                         $('.submit-container').removeClass('d-none');
                         if(response.is_submit == 1){
                             $('.submit-container').removeClass('d-none');

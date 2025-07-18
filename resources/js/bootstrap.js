@@ -27,7 +27,11 @@ window.Common = Common;
 import ListDataTable from './list_datatable';
 window.ListDataTable = ListDataTable;
 
+import GoogleFormApp from './googleform-app';
+window.GoogleFormApp = GoogleFormApp;
 
+import ListDataTableApp from './list_datatable_app';
+window.ListDataTableApp = ListDataTableApp;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

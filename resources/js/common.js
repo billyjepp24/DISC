@@ -18,7 +18,7 @@ class Common{
                 },
                 "search": "",
                 "searchPlaceholder": "Type any to search",
-                "lengthMenu": "_MENU_"
+                "lengthMenu": "MENU"
             },
             ajax: {
                 "headers": {
@@ -125,4 +125,3 @@ class Common{
 }
 
 export default new Common;
-

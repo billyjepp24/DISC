@@ -19,6 +19,8 @@
                 <div class="text-center">
                 <a href="{{ url('/googleform') }}" class="btn btn-primary" style="width:200px;">Go to Questionnaire</a> 
                 <a href="{{ url('/datatable') }}" class="btn btn-primary" style="width:200px;">Go to Data Table</a>
+                <a href="{{ url('/googleform-app') }}" class="btn btn-primary" style="width:200px;">Go to Questionnaire(New Applicants)</a>
+                <a href="{{ url('/datatable_app') }}" class="btn btn-primary" style="width:200px;">Go to Data Table(New Applicants)</a>
                 </div>   
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
