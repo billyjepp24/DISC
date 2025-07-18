@@ -21,9 +21,10 @@ use App\Http\Controllers\ListDataTableApp;
 Route::get('/', function () {
     return Redirect::to('googleform');
 });
+Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants.index');
 
-
-
+Auth::routes();
+Route::group(['middleware'=>['auth']], function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform');
@@ -32,7 +33,7 @@ Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->n
 Route::get('/googleform/show', [GoogleFormController::class, 'show']);
 Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
 
-Route::get('/googleform-app', [ApplicantsController::class, 'index'])->name('googleform-app');
+
 Route::post('/applicants/store', [ApplicantsController::class, 'store'])->name('applicants.store');
 Route::post('/googleform-app/store-basic', [ApplicantsController::class, 'storeBasic'])->name('applicants.storeBasic');
 Route::post('/googleform-app/autosave', [ApplicantsController::class, 'autosave'])->name('googleform-app.autosave');
@@ -43,8 +44,7 @@ Route::post('/googleform-app/fetch-answers', [ApplicantsController::class, 'fetc
 
 
 
-Auth::routes();
-Route::group(['middleware'=>['auth']], function() {
+
 
 // Route::get('/form', [App\Http\Controllers\GoogleFormController::class, 'index'])->name('form.index');
 

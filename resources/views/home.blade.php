@@ -16,12 +16,15 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-                <div class="text-center">
-                <a href="{{ url('/googleform') }}" class="btn btn-primary" style="width:200px;">Go to Questionnaire</a> 
-                <a href="{{ url('/datatable') }}" class="btn btn-primary" style="width:200px;">Go to Data Table</a>
-                <a href="{{ url('/googleform-app') }}" class="btn btn-primary" style="width:200px;">Go to Questionnaire(New Applicants)</a>
-                <a href="{{ url('/datatable_app') }}" class="btn btn-primary" style="width:200px;">Go to Data Table(New Applicants)</a>
-                </div>   
+                <div class="d-flex flex-column align-items-center my-4">
+                    <h2 class="mt-3">Employee </h2>
+                    <a href="{{ url('/googleform') }}" class="btn btn-primary mb-2" style="width:200px;">Questionnaire for Employees</a>
+                    <a href="{{ url('/datatable') }}" class="btn btn-primary mb-2" style="width:200px;">Results for Employees</a>
+
+                    <h2 class="mt-4">New Applicants</h2>
+                    <a href="{{ url('/googleform-app') }}" class="btn btn-primary mb-2" style="width:200px;">Questionnaire for New Applicants</a>
+                    <a href="{{ url('/datatable_app') }}" class="btn btn-primary mb-2" style="width:200px;">Results for New Applicants</a>
+                </div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
