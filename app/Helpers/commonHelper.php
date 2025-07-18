@@ -37,7 +37,7 @@ if (!function_exists('questionBlocks')) {
                                 <input class="form-check-input" type="radio" id="q' . $qNumber . '-c" name="question-' . $qNumber . '" value="C">
                                 <label class="form-check-label fs-5" for="q' . $qNumber . '-c">C. ' . htmlspecialchars($q->option_c) . '</label>
                             </div>
-
+                        
                             <div class="form-check fs-5">
                                 <input class="form-check-input" type="radio" id="q' . $qNumber . '-d" name="question-' . $qNumber . '" value="D">
                                 <label class="form-check-label fs-5" for="q' . $qNumber . '-d">D. ' . htmlspecialchars($q->option_d) . '</label>

@@ -8,7 +8,6 @@ class ListDataTable {
     //   alert('DataTable loaded');
       this.list();
       this.clickButton();
-
     }
 
     list(){
@@ -65,45 +64,44 @@ class ListDataTable {
     }
 
     highlightDISC(answersArray) {
-  // ✅ Remove old highlights
-  $('#discTable td').removeClass('highlight');
-  $('#totalD, #totalI, #totalS, #totalC').text('').removeClass('highlight-total');
+      // ✅ Remove old highlights
+      $('#discTable td').removeClass('highlight');
+      $('#totalD, #totalI, #totalS, #totalC').text('').removeClass('highlight-total');
 
-  // ✅ Get all data rows except the last 2 rows (total + labels)
-    var rows = $('#discTable tbody tr').slice(0, 24);
-    var totals = [0, 0, 0, 0];
+      // ✅ Get all data rows except the last 2 rows (total + labels)
+        var rows = $('#discTable tbody tr').slice(0, 24);
+        var totals = [0, 0, 0, 0];
 
-    $.each(answersArray, function(idx, ans) {
-      var row = rows.eq(idx);
-      if (!row.length) return;
-        console.log('Processing answer:', ans, 'for row:', idx + 1);
-      var cells = row.find('td');
-      cells.slice(1).each(function(i) {
-        if ($(this).text().trim().toUpperCase() === ans.toUpperCase()) {
-          $(this).addClass('highlight');
-          totals[i]++;
-        }
-      });
-    });
+        $.each(answersArray, function(idx, ans) {
+          var row = rows.eq(idx);
+          if (!row.length) return;
+            console.log('Processing answer:', ans, 'for row:', idx + 1);
+          var cells = row.find('td');
+          cells.slice(1).each(function(i) {
+            if ($(this).text().trim().toUpperCase() === ans.toUpperCase()) {
+              $(this).addClass('highlight');
+              totals[i]++;
+            }
+          });
+        });
 
-    // ✅ Update totals
-    $('#totalD').text(totals[0]);
-    $('#totalI').text(totals[1]);
-    $('#totalS').text(totals[2]);
-    $('#totalC').text(totals[3]);
+        // ✅ Update totals
+        $('#totalD').text(totals[0]);
+        $('#totalI').text(totals[1]);
+        $('#totalS').text(totals[2]);
+        $('#totalC').text(totals[3]);
 
-    // ✅ Highlight top 2 totals
-    var sorted = $.map(totals, function(val, idx) {
-      return { val: val, idx: idx };
-    }).sort(function(a, b) {
-      return b.val - a.val;
-    }).slice(0, 2);
+        // ✅ Highlight top 2 totals
+        var sorted = $.map(totals, function(val, idx) {
+          return { val: val, idx: idx };
+        }).sort(function(a, b) {
+          return b.val - a.val;
+        }).slice(0, 2);
 
-    $.each(sorted, function(_, obj) {
-      var id = ['#totalD', '#totalI', '#totalS', '#totalC'][obj.idx];
-      $(id).addClass('highlight-total');
-    });
-}
-    
-}
-export default new ListDataTable();
+        $.each(sorted, function(_, obj) {
+          var id = ['#totalD', '#totalI', '#totalS', '#totalC'][obj.idx];
+          $(id).addClass('highlight-total');
+        });
+    }    
+  }
+  export default new ListDataTable();

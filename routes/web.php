@@ -19,7 +19,7 @@ use App\Http\Controllers\ListDataTableApp;
 */
 
 Route::get('/', function () {
-    return Redirect::to('login');
+    return Redirect::to('googleform');
 });
 
 Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants');
