@@ -22,8 +22,8 @@ Route::get('/', function () {
     return Redirect::to('googleform');
 });
 
-Route::get('/applicant', [ApplicantsController::class, 'index'])->name('applicants');
-
+Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants');
+Route::post('/googleform-app/store-basic', [ApplicantsController::class, 'storeBasic'])->name('applicants.storeBasic');
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,7 +36,7 @@ Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->
 
 
 Route::post('/applicants/store', [ApplicantsController::class, 'store'])->name('applicants.store');
-Route::post('/googleform-app/store-basic', [ApplicantsController::class, 'storeBasic'])->name('applicants.storeBasic');
+
 Route::post('/googleform-app/autosave', [ApplicantsController::class, 'autosave'])->name('googleform-app.autosave');
 Route::post('/googleform-app/store', [ApplicantsController::class, 'store'])->name('googleform-app.store');
 Route::post('/googleform-app/fetch-answers', [ApplicantsController::class, 'fetchAnswers']);
