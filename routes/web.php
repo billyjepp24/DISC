@@ -22,7 +22,7 @@ Route::get('/', function () {
     return Redirect::to('googleform');
 });
 
-Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants');
+Route::get('/applicant', [ApplicantsController::class, 'index'])->name('applicants');
 
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
