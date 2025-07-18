@@ -55,7 +55,6 @@
 @endsection
 
 @section('footer-scripts')
-@vite(['resources/js/list_datatable.js'])
 <script type="module">
 ListDataTable.onLoadPage();
 </script>
