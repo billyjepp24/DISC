@@ -55,7 +55,7 @@
 
 
     <div class="questionnaire-container d-none">
-     <form id="googleapp_form">
+     <form id="applicants">
           <input type="hidden" name="email" id="hidden_email">
           <input type="hidden" name="name" id="hidden_name">
           {!! questionBlocks() !!}

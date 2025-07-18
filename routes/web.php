@@ -21,7 +21,8 @@ use App\Http\Controllers\ListDataTableApp;
 Route::get('/', function () {
     return Redirect::to('googleform');
 });
-Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants.index');
+
+Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants');
 
 Auth::routes();
 Route::group(['middleware'=>['auth']], function() {
