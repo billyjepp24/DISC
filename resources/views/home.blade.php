@@ -22,7 +22,7 @@
                     <a href="{{ url('/datatable') }}" class="btn btn-primary mb-2" style="width:200px;">Results for Employees</a>
 
                     <h2 class="mt-4">New Applicants</h2>
-                    <a href="{{ url('/googleform-app') }}" class="btn btn-primary mb-2" style="width:200px;">Questionnaire for New Applicants</a>
+                    <a href="{{ url('/applicants') }}" class="btn btn-primary mb-2" style="width:200px;">Questionnaire for New Applicants</a>
                     <a href="{{ url('/datatable_app') }}" class="btn btn-primary mb-2" style="width:200px;">Results for New Applicants</a>
                 </div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
