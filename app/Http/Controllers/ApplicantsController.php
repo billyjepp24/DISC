@@ -13,7 +13,7 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-        return view('googleform-app');    
+        return view('applicants');
      }
 
     /**
