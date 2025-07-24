@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('/applicants', [ApplicantsController::class, 'index'])->name('applicants');
 Route::post('/googleform-app/store-basic', [ApplicantsController::class, 'storeBasic'])->name('applicants.storeBasic');
 Auth::routes();
-Route::group(['middleware'=>['auth']], function() {
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/googleform', [GoogleFormController::class, 'index'])->name('googleform');
@@ -33,7 +33,7 @@ Route::post('/googleform/store', [GoogleFormController::class, 'store'])->name('
 Route::post('/googleform/login', [GoogleFormController::class, 'form_login'])->name('googleform.login');
 Route::get('/googleform/show', [GoogleFormController::class, 'show']);
 Route::post('/googleform/autosave', [GoogleFormController::class, 'autosave'])->name('googleform.autosave');
-
+Route::group(['middleware'=>['auth']], function() {
 
 Route::post('/applicants/store', [ApplicantsController::class, 'store'])->name('applicants.store');
 
