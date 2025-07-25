@@ -58,7 +58,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('googleform');
+        return view('auth.login');
     }
 
 
