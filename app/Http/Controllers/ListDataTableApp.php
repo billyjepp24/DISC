@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AnswersApp;
+
 class ListDataTableApp extends Controller
 {
     //
@@ -12,37 +13,35 @@ class ListDataTableApp extends Controller
         return view('datatable_app');
     }
 
-    public function list(Request $request){
+    public function list(Request $request)
+    {
         $keywords = $request->input('search.value', '');
         $limit = $request->input('length');
 
-        $rawquery = AnswersApp::where(function($query) use ($keywords) {
-         $query->where('email', 'LIKE', "%$keywords%")
-          ->orWhere('name', 'LIKE', "%$keywords%");
-});
-
-            
-   
+        $rawquery = AnswersApp::where(function ($query) use ($keywords) {
+            $query->where('email', 'LIKE', "%$keywords%")
+                ->orWhere('name', 'LIKE', "%$keywords%");
+        });
 
         $totalRecords = $rawquery->get()->count();
 
         if ($request->input('draw') > 1) {
- 
+
             $start = $request->input('start');
- 
+
             $column = $request->input('order.0.column');
             $direction = $request->input('order.0.dir');
             $order = $request->input('columns')[$column]['data'];
- 
+
             $temp = $rawquery->get();
- 
+
             $rawQuery = $limit > 0 ? $rawquery->skip($start)->take($limit) : $rawquery;
- 
+
             $data = $rawQuery->orderBy('updated_at', 'desc')->orderBy($order, $direction)->get();
- 
+
             $totalFiltered = count($temp);
         } else {
-         
+
             $data = $rawquery->orderby("updated_at", "desc")->take($limit)->get();
             $totalFiltered = $totalRecords;
         }
@@ -56,7 +55,7 @@ class ListDataTableApp extends Controller
             if (!empty($d->emp_code)) {
                 $user_details = user_details($d->emp_code);
             }
-   
+
             $newData[$i] = [
                 'id'        => $d->id,
                 'email' => $d->email,
@@ -78,18 +77,16 @@ class ListDataTableApp extends Controller
     }
 
     public function show(Request $request)
-{
-    $id = $request->input('id');
-    $data = AnswersApp::findOrFail($id);
+    {
+        $id = $request->input('id');
+        $data = AnswersApp::findOrFail($id);
 
-    return response()->json([
-        'id' => $data->id,
-        'email' => $data->email,
-        'name' => $data->name ?? 'N/A', // ✅ FIXED HERE
-        'created_at' => date('Y-M-d', strtotime($data->created_at)),
-        'answers' => $data->answers
-    ]);
-}
-
-
+        return response()->json([
+            'id' => $data->id,
+            'email' => $data->email,
+            'name' => $data->name ?? 'N/A', // ✅ FIXED HERE
+            'created_at' => date('Y-M-d', strtotime($data->created_at)),
+            'answers' => $data->answers
+        ]);
+    }
 }

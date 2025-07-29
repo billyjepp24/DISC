@@ -4,7 +4,7 @@ class ListDataTableApp {
    constructor() {
    }
 
-    onLoadPage(){
+    onLoadPage(){ 
     //   alert('DataTable loaded');
       this.list();
       this.clickButton();
