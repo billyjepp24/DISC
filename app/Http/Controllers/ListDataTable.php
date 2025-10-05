@@ -34,12 +34,12 @@ class ListDataTable extends Controller
  
             $rawQuery = $limit > 0 ? $rawquery->skip($start)->take($limit) : $rawquery;
  
-            $data = $rawQuery->orderBy('updated_at', 'desc')->orderBy($order, $direction)->get();
+            $data = $rawQuery->orderBy('id', 'desc')->orderBy($order, $direction)->get();
  
             $totalFiltered = count($temp);
         } else {
          
-            $data = $rawquery->orderby("updated_at", "desc")->take($limit)->get();
+            $data = $rawquery->orderby("id", "desc")->take($limit)->get();
             $totalFiltered = $totalRecords;
         }
 
